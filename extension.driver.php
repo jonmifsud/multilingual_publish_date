@@ -100,6 +100,9 @@
 		//this is a nice function to auto-create older dated entries which do not have this field 
 		private function autoFillPastData(){
 
+			//there could be a lot of fields so do not time out whilst doing this
+			set_time_limit(0);
+
 			// 1. Get all sections which have this field
 			$fields = FieldManager::fetch(null,null,'ASC','id','multilingual_publish_date');
 			// var_dump($fields);die;
@@ -152,7 +155,7 @@
 		 */
 		public function dAddCustomPreferenceFieldsets($context){
 			//autoFillPastData
-			$this->autoFillPastData();
+			// $this->autoFillPastData();
 
 			$group = new XMLElement('fieldset');
 			$group->setAttribute('class', 'settings');
